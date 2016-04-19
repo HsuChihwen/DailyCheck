@@ -1,0 +1,60 @@
+ date
+
+2016年 04月 06日 星期三 11:12:35 CST
+[root@localhost czzhd]# 
+[root@localhost czzhd]#  uname -a
+
+Linux localhost.localdomain 3.10.0-327.4.5.el7.x86_64 #1 SMP Mon Jan 25 22:07:14 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@localhost czzhd]# 
+[root@localhost czzhd]#  df -lP
+
+文件系统                 1024-块    已用     可用 配额 挂载点
+/dev/mapper/centos-root 18307072 6471824 11835248  36% /
+devtmpfs                  919052       0   919052   0% /dev
+tmpfs                     934348     148   934200   1% /dev/shm
+tmpfs                     934348   83972   850376   9% /run
+tmpfs                     934348       0   934348   0% /sys/fs/cgroup
+/dev/sda1                 508588  265136   243452  53% /boot
+tmpfs                     186872      12   186860   1% /run/user/1000
+tmpfs                     186872      24   186848   1% /run/user/1001
+tmpfs                     934348      40   934308   1% /tmp
+tmpfs                     186872       0   186872   0% /run/user/0
+[root@localhost czzhd]# 
+[root@localhost czzhd]#  free -m
+
+              total        used        free      shared  buff/cache   available
+Mem:           1824        1332          73          55         419         231
+Swap:          2047         537        1510
+[root@localhost czzhd]# 
+[root@localhost czzhd]#  netstat -nltp
+
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:5901            0.0.0.0:*               LISTEN      46942/Xvnc          
+tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      3391/dnsmasq        
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1246/sshd           
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      12080/cupsd         
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      2384/master         
+tcp        0      0 192.168.1.241:10050     0.0.0.0:*               LISTEN      15856/./zabbix_agen 
+tcp        0      0 192.168.1.241:10051     0.0.0.0:*               LISTEN      14867/./zabbix_serv 
+tcp6       0      0 :::3306                 :::*                    LISTEN      13837/mysqld        
+tcp6       0      0 :::5901                 :::*                    LISTEN      46942/Xvnc          
+tcp6       0      0 :::80                   :::*                    LISTEN      14635/httpd         
+tcp6       0      0 :::22                   :::*                    LISTEN      1246/sshd           
+tcp6       0      0 ::1:631                 :::*                    LISTEN      12080/cupsd         
+tcp6       0      0 ::1:25                  :::*                    LISTEN      2384/master         
+tcp6       0      0 :::443                  :::*                    LISTEN      14635/httpd         
+tcp6       0      0 192.168.1.241:10052     :::*                    LISTEN      15865/java          
+[root@localhost czzhd]# 
+[root@localhost czzhd]#  ps aux | sort -k4nr | head -n 10
+mysql     13837  0.7 11.2 2481364 210136 ?      Sl   2月15 528:40 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mysqld.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/lib/mysql/mysql.sock
+xuzw      12072  0.0  9.6 1759884 179956 ?      Sl   2月15  28:20 /usr/bin/gnome-shell
+root      47113  0.0  8.9 1753940 167224 ?      Sl   3月14  12:31 /usr/bin/gnome-shell
+root      47294  0.3  8.1 525520 152888 ?       S    3月14 109:46 /usr/bin/vmtoolsd -n vmusr
+zabbix    15865  0.1  5.3 3764452 100448 ?      Sl   2月15 105:16 java -classpath :lib/android-json-4.3_r3.1.jar:lib/logback-classic-0.9.27.jar:lib/logback-core-0.9.27.jar:lib/slf4j-api-1.6.1.jar:bin/zabbix-java-gateway-2.4.7.jar -Dzabbix.pidFile=/var/run/zabbix/zabbix_java.pid -Dzabbix.listenIP=192.168.1.241 com.zabbix.gateway.JavaGateway
+xuzw      12031  0.0  1.7 1189580 32512 ?       Sl   2月15   2:09 /usr/libexec/gnome-settings-daemon
+apache    76610  0.2  1.6 520364 29984 ?        S    10:51   0:02 /usr/sbin/httpd -DFOREGROUND
+apache    77125  1.2  1.6 520840 30652 ?        S    11:04   0:05 /usr/sbin/httpd -DFOREGROUND
+apache    77111  0.8  1.5 518812 28612 ?        S    11:03   0:04 /usr/sbin/httpd -DFOREGROUND
+root      47096  0.0  1.4 1033776 27600 ?       Sl   3月14   0:59 /usr/libexec/gnome-settings-daemon
+[root@localhost czzhd]# 

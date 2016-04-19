@@ -1,0 +1,55 @@
+
+系统当前时间:date
+
+ 2016年 04月 06日 星期三 11:12:43 CST
+
+系统内核版本:uname -a
+
+ Linux oracle 2.6.32-358.el6.x86_64 #1 SMP Tue Jan 29 11:47:41 EST 2013 x86_64 x86_64 x86_64 GNU/Linux
+
+各分区使用情况:df -lP
+
+ 文件系统	       1024-块      已用      可用 配额 挂载点
+/dev/sda5              5160576    435092   4463340       9% /
+tmpfs                  6291456   2007520   4283936      32% /dev/shm
+/dev/sda8             36119168  16312768  17971648      48% /database/dbdata
+/dev/sda1             25803068   9286224  15206124      38% /database/system
+/dev/sda7              2064208     68684   1890668       4% /tmp
+/dev/sda2             10321208   2658928   7137992      28% /usr
+/dev/sda6              5160576    302488   4595944       7% /var
+
+内存使用量和交换区使用量:free -m
+
+              total       used       free     shared    buffers     cached
+Mem:          7858       7411        447          0        506       6177
+-/+ buffers/cache:        727       7130
+Swap:         8191          0       8191
+
+所有监听端口:netstat -nltp
+
+ Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name   
+tcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      1733/rpcbind        
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      2063/sshd           
+tcp        0      0 127.0.0.1:631               0.0.0.0:*                   LISTEN      1946/cupsd          
+tcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      2165/master         
+tcp        0      0 0.0.0.0:47354               0.0.0.0:*                   LISTEN      1852/rpc.statd      
+tcp        0      0 :::111                      :::*                        LISTEN      1733/rpcbind        
+tcp        0      0 :::1521                     :::*                        LISTEN      2272/tnslsnr        
+tcp        0      0 :::22                       :::*                        LISTEN      2063/sshd           
+tcp        0      0 ::1:631                     :::*                        LISTEN      1946/cupsd          
+tcp        0      0 ::1:25                      :::*                        LISTEN      2165/master         
+tcp        0      0 :::55516                    :::*                        LISTEN      7020/ora_d000_ora11 
+tcp        0      0 :::35818                    :::*                        LISTEN      1852/rpc.statd      
+
+内存占用前10:ps aux | sort -k4nr | head -n 10
+ oracle     7006  0.0 14.3 3473120 1153924 ?     Ss   Feb16  10:46 ora_dbw0_ora11
+oracle     7004  0.0 11.0 3456612 888720 ?      Ss   Feb16   5:06 ora_mman_ora11
+oracle     7012  0.0  6.3 3467436 507224 ?      Ss   Feb16   6:27 ora_smon_ora11
+oracle    23088  0.0  4.5 3463376 368836 ?      Ss   Feb19  27:39 ora_cjq0_ora11
+oracle     7016  0.0  3.7 3462624 300368 ?      Ss   Feb16  36:47 ora_mmon_ora11
+oracle     6998  0.0  2.5 3457152 203996 ?      Ss   Feb16   8:35 ora_dbrm_ora11
+root     129960  0.2  1.4 6659708 120196 ?      Sl   Mar11  78:52 java -Duser.language=en -Duser.country=US -Dlog4j.configuration=./conf/log4j.properties -cp lib/commons-codec-1.4.jar:lib/commons-dbcp-1.4.jar:lib/commons-lang-2.5.jar:lib/commons-logging-1.1.1.jar:lib/commons-pool-1.5.4.jar:lib/hsqldb.jar:lib/log4j-1.2.15.jar:lib/ojdbc6.jar:.:./orabbix-1.2.3.jar com.smartmarmot.orabbix.bootstrap start ./conf/config.props
+oracle     3901  0.0  1.2 3459380 100480 ?      Ss   Apr05   0:20 oracleora11 (LOCAL=NO)
+oracle     7010  0.0  1.1 3457124 89732 ?       Ss   Feb16  63:25 ora_ckpt_ora11
+oracle     7122  0.0  1.0 3462160 81220 ?       Ss   Feb16   2:06 ora_q001_ora11

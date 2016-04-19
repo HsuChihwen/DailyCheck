@@ -1,0 +1,71 @@
+
+系统当前时间:date
+
+ 2016年 04月 06日 星期三 11:12:39 CST
+
+系统内核版本:uname -a
+
+ Linux B2B.Admin 2.6.32-358.el6.x86_64 #1 SMP Tue Jan 29 11:47:41 EST 2013 x86_64 x86_64 x86_64 GNU/Linux
+
+各分区使用情况:df -lP
+
+ 文件系统	       1024-块      已用      可用 配额 挂载点
+/dev/sda3              5160576    383440   4514992       8% /
+tmpfs                  4022900         0   4022900       0% /dev/shm
+/dev/sda7             61923324  14987724  43790080      26% /app
+/dev/sda6              2064208     69024   1890328       4% /tmp
+/dev/sda1             10321208   5244900   4552020      54% /usr
+/dev/sda5              5160576   1412596   3485836      29% /var
+
+内存使用量和交换区使用量:free -m
+
+              total       used       free     shared    buffers     cached
+Mem:          7857       7736        120          0         65        157
+-/+ buffers/cache:       7512        344
+Swap:         8191       3148       5043
+
+所有监听端口:netstat -nltp
+
+ Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name   
+tcp        0      0 0.0.0.0:11211               0.0.0.0:*                   LISTEN      96636/memcached     
+tcp        0      0 0.0.0.0:8110                0.0.0.0:*                   LISTEN      5186/[httpsqs       
+tcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      1582/rpcbind        
+tcp        0      0 0.0.0.0:7090                0.0.0.0:*                   LISTEN      96518/nginx         
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      1880/sshd           
+tcp        0      0 127.0.0.1:631               0.0.0.0:*                   LISTEN      1750/cupsd          
+tcp        0      0 0.0.0.0:52312               0.0.0.0:*                   LISTEN      1600/rpc.statd      
+tcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      1965/master         
+tcp        0      0 127.0.0.1:6010              0.0.0.0:*                   LISTEN      25132/sshd          
+tcp        0      0 0.0.0.0:8443                0.0.0.0:*                   LISTEN      96518/nginx         
+tcp        0      0 0.0.0.0:10050               0.0.0.0:*                   LISTEN      2010/zabbix_agentd  
+tcp        0      0 :::8779                     :::*                        LISTEN      97030/java          
+tcp        0      0 :::11211                    :::*                        LISTEN      96636/memcached     
+tcp        0      0 :::111                      :::*                        LISTEN      1582/rpcbind        
+tcp        0      0 :::6160                     :::*                        LISTEN      100922/java         
+tcp        0      0 :::6260                     :::*                        LISTEN      97030/java          
+tcp        0      0 :::22                       :::*                        LISTEN      1880/sshd           
+tcp        0      0 ::1:631                     :::*                        LISTEN      1750/cupsd          
+tcp        0      0 :::6360                     :::*                        LISTEN      96992/java          
+tcp        0      0 :::54424                    :::*                        LISTEN      1600/rpc.statd      
+tcp        0      0 :::8889                     :::*                        LISTEN      96992/java          
+tcp        0      0 ::1:25                      :::*                        LISTEN      1965/master         
+tcp        0      0 ::1:6010                    :::*                        LISTEN      25132/sshd          
+tcp        0      0 :::45850                    :::*                        LISTEN      96992/java          
+tcp        0      0 :::45920                    :::*                        LISTEN      100922/java         
+tcp        0      0 ::ffff:127.0.0.1:8705       :::*                        LISTEN      97030/java          
+tcp        0      0 ::ffff:127.0.0.1:8005       :::*                        LISTEN      100922/java         
+tcp        0      0 ::ffff:127.0.0.1:8805       :::*                        LISTEN      96992/java          
+tcp        0      0 :::58983                    :::*                        LISTEN      100922/java         
+
+内存占用前10:ps aux | sort -k4nr | head -n 10
+ xhcp_pro 100922  0.7 21.1 8657748 1697788 ?     Sl   Mar30  74:05 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_basic/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -ms256m -mx2024m -Dfile.encoding=GBK -XX:MaxNewSize=256m -XX:MaxPermSize=2024m -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_basic/endorsed -classpath /app/xhcp_pro/conf:/app/xhcp_pro/tomcat_basic/bin/bootstrap.jar:/app/xhcp_pro/tomcat_basic/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_basic -Dcatalina.home=/app/xhcp_pro/tomcat_basic -Djava.io.tmpdir=/app/xhcp_pro/tomcat_basic/temp org.apache.catalina.startup.Bootstrap start
+root      21163 60.9  9.0 2386884 730176 ?      Sl   00:03 407:55 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+root     127600 58.6  8.7 2386884 703752 ?      Sl   Apr03 2926:17 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+xhcp_pro  12402 59.3  8.2 2386884 664224 ?      Sl   Apr05 1252:17 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+root      12403 59.3  7.5 2386884 607544 ?      Sl   Apr05 1252:42 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+root     119858 58.3  6.5 2386884 529452 ?      Sl   Apr02 3754:29 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+xhcp_pro 119856 58.4  6.4 2386884 514940 ?      Sl   Apr02 3759:10 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2
+xhcp_pro  96992  0.2  6.4 6492460 516620 ?      Sl   Mar30  26:08 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_finance_admin/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -ms256m -mx2024m -Dfile.encoding=GBK -XX:MaxNewSize=256m -XX:MaxPermSize=2024m -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_finance_admin/endorsed -classpath :/app/xhcp_pro/conf:/app/xhcp_pro/tomcat_finance_admin/bin/bootstrap.jar:/app/xhcp_pro/tomcat_finance_admin/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_finance_admin -Dcatalina.home=/app/xhcp_pro/tomcat_finance_admin -Djava.io.tmpdir=/app/xhcp_pro/tomcat_finance_admin/temp org.apache.catalina.startup.Bootstrap start
+xhcp_pro  97030  0.2  6.0 4306092 485184 ?      Sl   Mar30  23:22 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_trade_admin/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms1024M -Xmx1024M -XX:NewSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -Dapps.home= -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_trade_admin/endorsed -classpath :/app/xhcp_pro/conf:/WEB-INF/config:/app/xhcp_pro/tomcat_trade_admin/bin/bootstrap.jar:/app/xhcp_pro/tomcat_trade_admin/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_trade_admin -Dcatalina.home=/app/xhcp_pro/tomcat_trade_admin -Djava.io.tmpdir=/app/xhcp_pro/tomcat_trade_admin/temp org.apache.catalina.startup.Bootstrap start
+xhcp_pro 101919 57.8  5.9 2452420 480636 ?      Sl   Mar31 5382:25 /app/jdk1.6.0_45/bin/java -Xms256M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m com.forlink.spex.core.busi.auction.AuctionThread 2300 classpath:/WEB-INF/config/cron/cron_dao.xml jdbc:oracle:thin:@192.168.0.210:1521:ora11 jszhd jszhd 2

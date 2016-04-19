@@ -1,0 +1,68 @@
+
+系统当前时间:date
+
+ 2016年 04月 06日 星期三 11:12:41 CST
+
+系统内核版本:uname -a
+
+ Linux B2B.Web 2.6.32-358.el6.x86_64 #1 SMP Tue Jan 29 11:47:41 EST 2013 x86_64 x86_64 x86_64 GNU/Linux
+
+各分区使用情况:df -lP
+
+ 文件系统	       1024-块      已用      可用 配额 挂载点
+/dev/sda3              5160576    383428   4515004       8% /
+tmpfs                  4022900         0   4022900       0% /dev/shm
+/dev/sda7             51602044  17886928  31093884      37% /app
+/dev/sda6              2064208     68760   1890592       4% /tmp
+/dev/sda1             10321208   5242064   4554856      54% /usr
+/dev/sda5              5160576    328240   4570192       7% /var
+
+内存使用量和交换区使用量:free -m
+
+              total       used       free     shared    buffers     cached
+Mem:          7857       6140       1716          0        334       2726
+-/+ buffers/cache:       3079       4778
+Swap:         8191          9       8182
+
+所有监听端口:netstat -nltp
+
+ Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name   
+tcp        0      0 0.0.0.0:11211               0.0.0.0:*                   LISTEN      107813/memcached    
+tcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      1583/rpcbind        
+tcp        0      0 0.0.0.0:42384               0.0.0.0:*                   LISTEN      1601/rpc.statd      
+tcp        0      0 0.0.0.0:8083                0.0.0.0:*                   LISTEN      107755/nginx        
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      1881/sshd           
+tcp        0      0 127.0.0.1:631               0.0.0.0:*                   LISTEN      1751/cupsd          
+tcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      1966/master         
+tcp        0      0 0.0.0.0:38080               0.0.0.0:*                   LISTEN      107755/nginx        
+tcp        0      0 0.0.0.0:10050               0.0.0.0:*                   LISTEN      2011/zabbix_agentd  
+tcp        0      0 :::11211                    :::*                        LISTEN      107813/memcached    
+tcp        0      0 ::ffff:127.0.0.1:8205       :::*                        LISTEN      90800/java          
+tcp        0      0 :::8109                     :::*                        LISTEN      107487/java         
+tcp        0      0 ::ffff:127.0.0.1:8335       :::*                        LISTEN      107644/java         
+tcp        0      0 :::111                      :::*                        LISTEN      1583/rpcbind        
+tcp        0      0 :::8209                     :::*                        LISTEN      90800/java          
+tcp        0      0 :::8339                     :::*                        LISTEN      107644/java         
+tcp        0      0 :::34325                    :::*                        LISTEN      107487/java         
+tcp        0      0 :::22                       :::*                        LISTEN      1881/sshd           
+tcp        0      0 :::6103                     :::*                        LISTEN      107487/java         
+tcp        0      0 ::1:631                     :::*                        LISTEN      1751/cupsd          
+tcp        0      0 ::1:25                      :::*                        LISTEN      1966/master         
+tcp        0      0 :::59802                    :::*                        LISTEN      107644/java         
+tcp        0      0 :::55610                    :::*                        LISTEN      1601/rpc.statd      
+tcp        0      0 :::6203                     :::*                        LISTEN      90800/java          
+tcp        0      0 :::6303                     :::*                        LISTEN      107644/java         
+tcp        0      0 ::ffff:127.0.0.1:8105       :::*                        LISTEN      107487/java         
+
+内存占用前10:ps aux | sort -k4nr | head -n 10
+ xhcp_pro  90800  0.5 15.6 5308512 1259244 ?     Sl   Apr05   7:11 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_etrade/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms1024M -Xmx1024M -XX:NewSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -Dapps.home=/app/xhcp_pro/tomcat_etrade/webapps/ROOT -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_etrade/endorsed -classpath :/app/xhcp_pro/tomcat_etrade/webapps/ROOT/WEB-INF/config:/app/xhcp_pro/tomcat_etrade/bin/bootstrap.jar:/app/xhcp_pro/tomcat_etrade/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_etrade -Dcatalina.home=/app/xhcp_pro/tomcat_etrade -Djava.io.tmpdir=/app/xhcp_pro/tomcat_etrade/temp org.apache.catalina.startup.Bootstrap start
+xhcp_pro 107487  0.7 10.0 8737352 805252 ?      Sl   Mar19 185:45 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_cms/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -ms256m -mx2024m -Dfile.encoding=GBK -XX:MaxNewSize=256m -XX:MaxPermSize=2024m -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_cms/endorsed -classpath /app/xhcp_pro/conf:/app/xhcp_pro/tomcat_cms/bin/bootstrap.jar:/app/xhcp_pro/tomcat_cms/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_cms -Dcatalina.home=/app/xhcp_pro/tomcat_cms -Djava.io.tmpdir=/app/xhcp_pro/tomcat_cms/temp org.apache.catalina.startup.Bootstrap start
+xhcp_pro 107644  0.3  9.3 8423872 754216 ?      Sl   Mar19  85:27 /app/jdk1.6.0_45/bin/java -Djava.util.logging.config.file=/app/xhcp_pro/tomcat_finance/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -ms256m -mx2024m -Dfile.encoding=GBK -XX:MaxNewSize=256m -XX:MaxPermSize=2024m -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=/app/xhcp_pro/tomcat_finance/endorsed -classpath /app/xhcp_pro/tomcat_finance/bin/bootstrap.jar:/app/xhcp_pro/tomcat_finance/bin/tomcat-juli.jar -Dcatalina.base=/app/xhcp_pro/tomcat_finance -Dcatalina.home=/app/xhcp_pro/tomcat_finance -Djava.io.tmpdir=/app/xhcp_pro/tomcat_finance/temp org.apache.catalina.startup.Bootstrap start
+xhcp_pro 107813  0.1  0.1 335176  9616 ?        Ssl  Mar19  37:38 /app/support/memcached/bin/memcached -d -p 11211 -u xhcp_pro -m 64 -c 1024 -P /app/support/memcached/memcached.pid
+68         1785  0.0  0.0  26160  2228 ?        Ss   Feb15   0:48 hald
+68         1832  0.0  0.0  17804   880 ?        S    Feb15   0:00 hald-addon-acpi: listening on acpid socket /var/run/acpid.socket
+dbus       1735  0.0  0.0  21400   808 ?        Ss   Feb15   0:01 dbus-daemon --system
+ntp       40434  0.0  0.0  25936  1148 ?        Ss   Feb19   0:11 ntpd -u ntp:ntp -p /var/run/ntpd.pid -g
+postfix  101964  0.0  0.0  78800  3240 ?        S    10:36   0:00 pickup -l -t fifo -u
+postfix    1976  0.0  0.0  78968  2392 ?        S    Feb15   0:16 qmgr -l -t fifo -u
